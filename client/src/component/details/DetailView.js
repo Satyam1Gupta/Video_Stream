@@ -78,7 +78,7 @@ export default function DetailView() {
     }
    }
    console.log(post.picture)
-     const url= post.picture?post.picture:"http://localhost:8000/file/1678515671721-blog-1674996661860.mp4";
+     const url= post.picture?post.picture:"https://video-stream-isf5j.ondigitalocean.app/file/1678515671721-blog-1674996661860.mp4";
     return (
      <>
      <Grid container>
