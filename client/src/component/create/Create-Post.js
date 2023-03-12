@@ -37,7 +37,7 @@ border:none;
 `
 const initialPost={
     title:'',
-  
+    description:'',
     picture:'',
     username:'',
     categories:'',
@@ -50,16 +50,21 @@ export default function CreatePost() {
     const location=useLocation();
     const navigate=useNavigate();
     const {acount}=useContext(DataContext);
-    
+    const username=sessionStorage.getItem('userName');
     const handleChange=(e)=>{
         setPost({...post,[e.target.name]:e.target.value})
     }
 
     const savePost=async()=>{
+        if(username){
        const res=  await API.createPost(post);
        if(res.isSuccess){
         navigate('/')
        }
+    }
+    else{
+        alert("Login First....!")
+    }
     }
 
     useEffect(()=>{
@@ -69,15 +74,17 @@ export default function CreatePost() {
                 data.append('name',file.name);
                 data.append('file',file);
                  //API CALL
-                 console.log(file);
+                // console.log(file);
                  const response= await API.uploadFile(data);
                  //console.log(response.data);
                 post.picture=response.data;
+                alert('Video Uploaded...!')
             }
         }
         getImage();
-       post.categories=location.search?.split('=')[1] || 'all';
-       post.username=acount.username;
+        
+      // post.categories=location.search?.split('=')[1] || 'all';
+       post.username=acount.name;
     },[file])
   //console.log(post.picture)
     const url=post.picture?post.picture:'https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80'
@@ -98,11 +105,11 @@ export default function CreatePost() {
                 Publish
             </Button>
          </StFormctrl>
-         {/* <Textarea 
+         <Textarea 
          minRows={5}
-         placeholder='Tell me your story.....!'
+         placeholder='Description of the video...'
          onChange={(e)=>handleChange(e)} name='description'
-         /> */}
+         />
     </Container>
   )
 }

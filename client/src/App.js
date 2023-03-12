@@ -7,7 +7,7 @@ import Post from './component/home/Post'
  import { useState } from 'react'
  import CreatePost from './component/create/Create-Post'
 // import CreatePost from './component/create/Create-Post'
-// import DetailView from './component/details/DetailView'
+ import DetailView from './component/details/DetailView'
 // import Update from './component/create/Update'
 
 const PrivateRoute=({userAuthenticated,...props})=>{
@@ -44,10 +44,10 @@ export default function App() {
             <Route path='/create' element={<CreatePost/>}/>
           </Route>
           
-   {/*        <Route path='/post/:id' element={<PrivateRoute userAuthenticated={userAuthenticated}/>}>
+        <Route path='/post/:id' element={<PrivateRoute userAuthenticated={userAuthenticated}/>}>
           <Route path='/post/:id' element={<DetailView/>}/>
-          </Route>
-          <Route path='/update/:id' element={<PrivateRoute userAuthenticated={userAuthenticated}/>}>
+        </Route>
+     {/*      <Route path='/update/:id' element={<PrivateRoute userAuthenticated={userAuthenticated}/>}>
             <Route path='/update/:id' element={<Update/>}/>
           </Route> */}
         </Routes>

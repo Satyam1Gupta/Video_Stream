@@ -18,15 +18,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 // }
 
 //or productoin--->
-// app.use(express.static( "./client/build"));
-// app.get("/",(req,res)=>{
-//      res.sendFile("./client/build/index.html")
-// })
+app.use(express.static( "./client/build"));
+app.get("/",(req,res)=>{
+     res.sendFile("./client/build/index.html")
+})
 
 app.use('/',Router);
-app.get('/',(req, res)=>{
-    res.send("hello")
-})
 const PORT=process.env.PORT || 8000;
 app.listen(PORT, ()=>{console.log(`server is running on port ${PORT}`)})
 

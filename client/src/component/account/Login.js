@@ -98,6 +98,7 @@ export default function Login({setUserAuthenticated}) {
     if(res.isSuccess){
       setSignUp(signUpInitialValue);
       setAccount('login')
+      alert('Successully sign in');
     } else{
      setError('Something went wrong, please try again later...!')
     }
@@ -119,6 +120,7 @@ export default function Login({setUserAuthenticated}) {
       navigate('/');
 
     } else{
+      //alert('Wrong credentials!')
      setError('Something went wrong, please try again later...!')
     }
    }

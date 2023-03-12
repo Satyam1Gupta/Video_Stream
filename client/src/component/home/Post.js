@@ -2,7 +2,8 @@
 import React, { useEffect,useState } from 'react'
 import{API} from '../../../src/service/api';
 import { Box ,Grid} from '@mui/material';
-//import Post from './Post';
+import { Typography,styled } from '@mui/material'
+import Post_1 from './Post_1';
 import { useSearchParams,Link } from 'react-router-dom';
 
 export default function Post() {
@@ -26,22 +27,24 @@ export default function Post() {
 
   return (
    <>
+     <Box style={{margin:30}}>
+      {/* <h1 style={{justifyContent:'center'}}>Videos</h1> */}
+     <Grid container>
        {
           post && post.length>0 ? post.map(pos =>(
-            <Grid item lg={3} sm={3} xs={12} key={pos._id} >
-            {/* <Link  to={`post/${pos._id}`} style={{textDecoration:'none',color:'inherit'}}>
-            <Post post={pos}/>
-           
-            </Link> */}
-             <video width="520" height="340" controls>
-            <source src={pos.picture} type="video/mp4"/>
- 
-              </video>
-            </Grid>
+          
+                <Grid item lg={3} sm={3} xs={12} key={pos._id} >
+                <Link  to={`post/${pos._id}`} style={{textDecoration:'none',color:'inherit'}}>
+                  <Post_1 post={pos}/>
+                </Link>
+                
+                </Grid>
+          
            
           )): <Box style={{color:'#878787', margin:'30px 80px',fontSize:18}}>No data to display! </Box>
        }
-    
+      </Grid>
+     </Box>
     </>
   )
 }
